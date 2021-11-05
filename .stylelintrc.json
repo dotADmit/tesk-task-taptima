@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-order-config-standard"
+  ],
+  "customSyntax": "postcss-scss",
+  "plugins": [
+    "stylelint-order"
+  ],
+  "rules": {
+    "indentation": [
+      2
+    ]
+  }
+}
