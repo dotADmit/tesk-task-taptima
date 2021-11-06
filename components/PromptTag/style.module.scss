@@ -1,0 +1,44 @@
+@import "../../styles/variables";
+
+.prompt {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 20px;
+
+  color: $primary;
+
+  border-radius: 3px;
+  background-color: $white;
+  box-shadow: 0 4px 40px 0 rgb(93 170 255 / 10%);
+}
+
+.text {
+  display: inline-block;
+
+  text-align: left;
+  letter-spacing: 0.2px;
+
+  font: 1.25rem/1.5 $font-family-primary, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.close {
+  display: flex;
+
+  padding: 0;
+
+  cursor: pointer;
+
+  border: none;
+  background: none;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.promptItem:not(:last-child) {
+  margin-right: 20px;
+}

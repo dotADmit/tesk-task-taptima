@@ -6,8 +6,6 @@
   ],
   "rules": {
     "semi": "off",
-    "comma-dangle": "off",
-    "@typescript-eslint/comma-dangle": ["error"],
     "@typescript-eslint/semi": [ "warn" ],
     "@typescript-eslint/no-empty-interface": [
       "error",

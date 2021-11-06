@@ -8,7 +8,7 @@ develop:
 	npm run dev
 
 install:
-	npm ci
+	npm install
 
 lint:
 	npm run lint
