@@ -1,0 +1,17 @@
+.header {
+  display: grid;
+  grid-template-columns: 223px auto 132px;
+  grid-template-areas: "logo form button";
+}
+
+.logo {
+  grid-area: logo;
+}
+
+.form {
+  grid-area: form;
+}
+
+.button {
+  grid-area: button;
+}

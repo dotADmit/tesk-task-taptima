@@ -1,0 +1,68 @@
+@import "../../styles/variables";
+
+.form {
+  display: inline-flex;
+
+  border-radius: 3px;
+}
+
+.label,
+.input {
+  font: 1.25rem/1 $font-family-secondary;
+  font-size: 15px;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.label {
+  display: inline-block;
+
+  margin: 0 0 16px;
+
+  text-align: center;
+  letter-spacing: 0.2px;
+
+  color: $black-light;
+}
+
+.input {
+  display: inline-block;
+
+  min-width: 135px;
+
+  // width: 100%;
+  padding: 0;
+  padding: 26px 30px;
+
+  color: $black;
+
+  border: none;
+  outline: none;
+  background-color: $white;
+}
+
+.rate {
+  color: $black-light;
+}
+
+.option {
+  display: block;
+
+  width: 100%;
+
+  min-width: 135px;
+  padding: 0;
+  padding: 26px 30px;
+
+  color: $black;
+
+  border: none;
+  outline: none;
+  background-color: $white;
+}
+
+.select {
+  width: 100px;
+
+  text-align: center;
+}
