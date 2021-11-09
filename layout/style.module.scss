@@ -1,18 +1,28 @@
 .wrapper {
   display: grid;
 
-  min-height: 150vh;
+  min-height: 100vh;
   padding: 0 20px;
   grid-template:
     ". header ." auto
     ". body ." 1fr
     / auto minmax(700px, 1246px) auto;
+
+  @media (max-width: 750px) {
+    grid-template:
+      "header" auto
+      "body" 1fr / minmax(320px, 1fr);
+  }
 }
 
 .header {
   grid-area: header;
 
   margin-top: 46px;
+
+  @media (max-width: 750px) {
+    margin-top: 26px;
+  }
 }
 
 .main {
@@ -23,13 +33,13 @@
 
 .home {
   background: url("/main-img.png") no-repeat;
-  background-position: 157px 113px;
+  background-position: 147px 113px;
 
-  @media (max-width: 1700px) {
-    background-position: 234px 173px;
+  @media (min-width: 1700px) {
+    background-position: 220px 173px;
   }
 
-  @media (max-width: 1000px) {
-    background-position: 77px 62px;
+  @media (max-width: 1200px) {
+    background-position: 73px 42px;
   }
 }

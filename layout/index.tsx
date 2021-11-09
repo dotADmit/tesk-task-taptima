@@ -5,7 +5,7 @@ import styles from './style.module.scss';
 import cn from 'classnames';
 
 type PropsT = {
-  home?: boolean;
+  home?: 'false' | 'true';
   children: ReactNode;
 };
 
@@ -16,7 +16,7 @@ const Layout = (props: PropsT): JSX.Element => {
 
   return (
     <div className={wrapperClasses}>
-      <Header className={styles.header}/>
+      <Header className={styles.header} home={home} />
       <main className={styles.main}>
         <div>
           {children}

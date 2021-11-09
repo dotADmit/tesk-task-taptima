@@ -1,13 +1,16 @@
 @import "../../styles/variables";
 
 .form {
-  display: inline-flex;
+  display: grid;
+
+  grid-template-columns: 135px 145px 112px 135px 12px 163px;
 
   border-radius: 3px;
+  justify-items: start;
 }
 
 .label,
-.input {
+.item {
   font: 1.25rem/1 $font-family-secondary;
   font-size: 15px;
   font-weight: 500;
@@ -18,6 +21,7 @@
   display: inline-block;
 
   margin: 0 0 16px;
+  padding: 0 0 0 4px;
 
   text-align: center;
   letter-spacing: 0.2px;
@@ -25,44 +29,51 @@
   color: $black-light;
 }
 
-.input {
+.items-container {
+  display: grid;
+
+  padding: 10px 0;
+
+  border-radius: 3px;
+  background-color: $white;
+  box-shadow: 0 4px 40px rgb(0 0 0 / 4%);
+  grid-column: 1 / 4;
+  grid-template-columns: 135px 145px 112px 135px;
+}
+
+.item {
   display: inline-block;
 
-  min-width: 135px;
-
-  // width: 100%;
+  width: 100%;
   padding: 0;
-  padding: 26px 30px;
+  padding: 15px 30px;
 
   color: $black;
 
   border: none;
   outline: none;
-  background-color: $white;
+  background-color: inherit;
+
+  &:not(:last-child) {
+    border-right: 1px solid #dedede;
+  }
 }
 
 .rate {
   color: $black-light;
 }
 
-.option {
-  display: block;
+.submit {
+  grid-column: 6 / 7;
 
   width: 100%;
-
-  min-width: 135px;
-  padding: 0;
-  padding: 26px 30px;
-
-  color: $black;
-
-  border: none;
-  outline: none;
-  background-color: $white;
 }
 
-.select {
-  width: 100px;
-
-  text-align: center;
+// Removing input autocomplete background, set autocomplete color
+.item:-webkit-autofill,
+.item:-webkit-autofill:hover,
+.item:-webkit-autofill:focus,
+.item:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px $white inset !important;
+  -webkit-text-fill-color: $black;
 }

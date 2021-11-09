@@ -1,15 +1,18 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import { Button, HTag, PromptTag, Form } from '../components';
+import { HTag, PromptTag, Form } from '../components';
 import Layout from '../layout';
+import styles from './styles.module.scss';
+import cn from 'classnames';
 
-export default function Home (): JSX.Element {
+export default function Home(): JSX.Element {
   return (
-    <Layout home>
-      <HTag tag='h1'>Рассчитайте<br />стоимость доставки из Китая</HTag>
-      <Button color="primary" arrow="right">Далее</Button>
-      <PromptTag order="text button arrow" arrow="right">Для начала <br />заполните поля выше</PromptTag>
-      <Form />
+    <Layout home="true">
+      <HTag tag="h1" className={styles.header}>Рассчитайте<br />стоимость доставки из Китая</HTag>
+      <div className={styles['form-container']}>
+        <Form className={styles.form} size="b" />
+        <PromptTag order="text arrow" arrow="down" className={cn(styles['prompt-submit'],styles.prompt)}>Теперь нажмите на кнопку “Далее”</PromptTag>
+      </div>
+      <br />
+      <PromptTag order="text arrow" arrow="up" className={cn(styles['prompt-form'], styles.prompt)}>Для начала заполните поля выше</PromptTag>
     </Layout>
   );
 }
