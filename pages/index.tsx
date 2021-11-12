@@ -1,6 +1,6 @@
 import { HTag, PromptTag, Form } from '../components';
 import Layout from '../layout';
-import styles from './styles.module.scss';
+import styles from '/styles/index.module.scss';
 import cn from 'classnames';
 
 export default function Home(): JSX.Element {

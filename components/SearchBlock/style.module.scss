@@ -1,0 +1,85 @@
+@import "../../styles/variables";
+
+.label {
+  display: none;
+}
+
+.search-bar {
+  display: grid;
+
+  width: 100%;
+  max-width: 492px;
+  height: 53px;
+  grid-template-columns: 1fr 114px;
+  gap: 8px;
+}
+
+.search {
+  display: inline-block;
+
+  width: 100%;
+  padding: 15px 30px;
+
+  letter-spacing: 0.2px;
+
+  color: $black;
+
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  background-color: $white;
+  box-shadow: 0 4px 40px rgb(0 0 0 / 6%);
+
+  font-size: 15px;
+  font-style: normal;
+  line-height: 1;
+
+  &::placeholder {
+    color: $black-light;
+  }
+}
+
+.result {
+  overflow-y: scroll;
+
+  height: 408px;
+  margin: 58px 0 0;
+  padding: 0 4px 0 0;
+}
+
+.item {
+  display: grid;
+  align-items: center;
+
+  padding: 0 27px 0 0;
+
+  border: 1px solid $gray;
+  border-radius: 3px;
+  background: #f8faff;
+
+  grid-template-columns: 120px 1fr 132px;
+  gap: 30px;
+
+  &:not(:last-child) {
+    margin: 0 0 5px;
+  }
+}
+
+.img {
+  width: 100%;
+  height: 97px;
+
+  border-right: 0.5px solid $gray;
+}
+
+.text {
+  font-size: 17px;
+}
+
+.btn-search {
+  box-shadow: 0 4px 40px rgb(0 0 0 / 15%);
+}
+
+.btn-select {
+  box-shadow: 0 4px 40px 0 rgb(46 80 87 / 12%);
+}

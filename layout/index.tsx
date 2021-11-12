@@ -18,9 +18,7 @@ const Layout = (props: PropsT): JSX.Element => {
     <div className={wrapperClasses}>
       <Header className={styles.header} home={home} />
       <main className={styles.main}>
-        <div>
-          {children}
-        </div>
+        {children}
       </main>
     </div>
   );

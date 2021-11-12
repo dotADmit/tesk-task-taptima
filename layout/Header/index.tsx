@@ -13,7 +13,7 @@ const Header = (props: PropsT): JSX.Element => {
   return (
     <header {...props} className={cn(styles.header, className)}>
       <img src="/logo.png" alt="logo" className={styles.logo} />
-      {home && <Form size="s"/>}
+      {!home && <Form size="s"/>}
       <Button color="white" className={styles.button}>Связаться</Button>
     </header>
   );

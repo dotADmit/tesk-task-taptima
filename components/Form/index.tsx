@@ -2,6 +2,7 @@ import styles from './style.module.scss';
 import cn from 'classnames';
 import { Button } from '../';
 import { FormHTMLAttributes } from 'react';
+import Link from 'next/link';
 
 type PropsT = FormHTMLAttributes<HTMLFormElement> & {
   size: 's' | 'b';
@@ -32,7 +33,9 @@ const Form = (props: PropsT): JSX.Element => {
         <input className={cn(styles.item, styles.rate)} value="64,54 руб." disabled />
       </div>
 
-      <Button color="primary" arrow="right" type="submit" className={styles.submit}>Далее</Button>
+      <Link href="/selection">
+        <Button color="primary" arrow="right" type="submit" className={styles.submit}>Далее</Button>
+      </Link>
     </form>
   );
 
