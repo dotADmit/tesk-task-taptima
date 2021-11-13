@@ -1,30 +1,43 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, useState, ChangeEvent } from 'react';
 import styles from './style.module.scss';
-import { Button } from '..';
+import { Button, PromptTag } from '..';
+import { ProductModelT } from '../../types/product.type';
+import Image from 'next/image';
 
 type PropsT = HTMLAttributes<HTMLDivElement> & {
-};
-
-const item = {
-  id: 1,
-  img: '/sofa.png',
-  description: 'Диван-кровать, раскладывается',
+  items: ProductModelT[],
 };
 
 const SearchBlock = (props: PropsT): JSX.Element => {
+  const { items } = props;
+  const [text, setText] = useState('');
+
+  const handleChangeText = (e: ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value);
+  };
+
   return (
     <div className={styles.wrapper}>
-      <div className={styles['search-bar']}>
+      <div className={styles.searchBar}>
         <label htmlFor="search" className={styles.label}>Поиск мебели</label>
-        <input type="text" name="search" id="seacth" className={styles.search} placeholder="Введите название" />
-        <Button color="primary" className={styles['btn-search']}>Поиск</Button>
+        <input
+          type="text"
+          name="search"
+          id="search"
+          className={styles.search}
+          placeholder="Введите название"
+          value={text}
+          onChange={handleChangeText}
+        />
+        <Button color="primary" className={styles.btnSearch}>Поиск</Button>
+        <PromptTag order={'arrow text'} arrow={'left'} className={styles.prompt}>Введите название мебели в строку поиска или<br />выберите мебель из предложенного списка</PromptTag>
       </div>
       <div className={styles.result}>
-        {new Array(10).fill(item).map((i) => (
-          <div className={styles.item}>
-            <img src={i.img} alt='furniture' className={styles.img} />
-            <p className={styles.text}>{i.description}</p>
-            <Button color="primary" className={styles['btn-select']}>Выбрать</Button>
+        {items.map((item, i) => (
+          <div className={styles.item} key={i}>
+            <Image src={item.image} alt='furniture' className={styles.img} height={97} width={100} />
+            <p className={styles.text}>{item.title}</p>
+            <Button color="primary" className={styles.btnSelect}>Выбрать</Button>
           </div>
         ))}
       </div>

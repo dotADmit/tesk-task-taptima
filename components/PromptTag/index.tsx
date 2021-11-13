@@ -1,4 +1,4 @@
-import { HTMLAttributes, useState } from 'react';
+import { HTMLAttributes, MouseEvent, useState } from 'react';
 import styles from './style.module.scss';
 import cn from 'classnames';
 
@@ -16,7 +16,10 @@ const PromptTag = (props: PropsT): JSX.Element => {
     [styles.hidden]: hidden,
   });
 
-  const handlerBtnClose = () => { setHidden(true); };
+  const handlerBtnClose = (e: MouseEvent) => {
+    e.preventDefault();
+    setHidden(true);
+  };
 
   const elements = {
     arrow: (

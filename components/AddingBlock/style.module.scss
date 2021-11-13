@@ -1,85 +1,116 @@
 @import "../../styles/variables";
 
+.title {
+  margin-top: 168px;
+
+  letter-spacing: -1px;
+
+  font-size: 23px;
+  line-height: 1;
+}
+
 .label {
   display: none;
 }
 
-.search-bar {
-  display: grid;
-
-  width: 100%;
-  max-width: 492px;
-  height: 53px;
-  grid-template-columns: 1fr 114px;
-  gap: 8px;
-}
-
-.search {
-  display: inline-block;
-
-  width: 100%;
-  padding: 15px 30px;
-
-  letter-spacing: 0.2px;
-
-  color: $black;
-
-  border: none;
-  border-radius: 3px;
-  outline: none;
-  background-color: $white;
-  box-shadow: 0 4px 40px rgb(0 0 0 / 6%);
-
-  font-size: 15px;
-  font-style: normal;
-  line-height: 1;
-
-  &::placeholder {
-    color: $black-light;
-  }
-}
-
-.result {
-  overflow-y: scroll;
-
-  height: 408px;
-  margin: 58px 0 0;
-  padding: 0 4px 0 0;
-}
-
 .item {
-  display: grid;
+  position: relative;
+
+  display: inline-flex;
   align-items: center;
 
-  padding: 0 27px 0 0;
-
-  border: 1px solid $gray;
   border-radius: 3px;
   background: #f8faff;
 
-  grid-template-columns: 120px 1fr 132px;
-  gap: 30px;
-
-  &:not(:last-child) {
-    margin: 0 0 5px;
+  &Prompt {
+    position: absolute;
+    z-index: 10;
+    right: -58px;
+    bottom: 15px;
   }
 }
 
-.img {
-  width: 100%;
-  height: 97px;
-
-  border-right: 0.5px solid $gray;
-}
-
 .text {
+  padding: 27px;
+
+  letter-spacing: -1px;
+
   font-size: 17px;
+  font-style: normal;
 }
 
-.btn-search {
-  box-shadow: 0 4px 40px rgb(0 0 0 / 15%);
+.counter {
+  display: flex;
+
+  &Wrapper {
+    display: flex;
+    align-items: center;
+
+    margin: 24px 0;
+  }
+
+  &Title {
+    margin: 0 35px 0 0;
+
+    letter-spacing: 0.2px;
+
+    font-size: 15px;
+  }
+
+  &Btn {
+    width: 53px;
+    height: 53px;
+
+    cursor: pointer;
+
+    color: $primary;
+    border: none;
+    background-color: $white;
+
+    font-size: 25px;
+
+    &:first-child {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+
+    &:last-child {
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+  }
+
+  &Input {
+    width: 53px;
+
+    text-align: center;
+
+    border-radius: 0;
+    box-shadow: none;
+  }
 }
 
-.btn-select {
-  box-shadow: 0 4px 40px 0 rgb(46 80 87 / 12%);
+.form {
+  position: relative;
+
+  &Prompt {
+    position: absolute;
+    z-index: 10;
+    bottom: 0;
+    left: -600px;
+
+    padding: 16.5px 20px;
+  }
+
+  &Input {
+    display: block;
+
+    max-width: 319px;
+    margin: 15px 0 0;
+  }
+
+  &Btn {
+    margin: 36px 9px 0 0;
+    padding: 19px 64px;
+  }
 }

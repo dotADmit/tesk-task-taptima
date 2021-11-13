@@ -30,3 +30,38 @@ h3 {
   margin: 0;
   padding: 0;
 }
+
+input,
+select {
+  display: inline-block;
+
+  width: 100%;
+  padding: 18px;
+
+  letter-spacing: 0.2px;
+
+  color: $black;
+
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  background-color: $white;
+  box-shadow: 0 4px 40px rgb(0 0 0 / 6%);
+
+  font-size: 15px;
+  font-style: normal;
+  line-height: 1;
+
+  &::placeholder {
+    color: $black-light;
+  }
+
+  // Removing input autocomplete background, set autocomplete color
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    box-shadow: 0 0 0 30px $white inset !important;
+    -webkit-text-fill-color: $black;
+  }
+}

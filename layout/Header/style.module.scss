@@ -1,5 +1,8 @@
 .header {
+  position: relative;
+
   display: grid;
+  align-items: center;
   grid-template-columns: 223px auto 132px;
   grid-template-areas: "logo form button";
 }
@@ -14,4 +17,12 @@
 
 .button {
   grid-area: button;
+}
+
+.prompt {
+  position: absolute;
+  top: 50px;
+  left: 223px;
+
+  padding: 16px 20px;
 }
