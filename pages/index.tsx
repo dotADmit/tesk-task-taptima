@@ -9,10 +9,10 @@ export default function Home(): JSX.Element {
       <HTag tag="h1" className={styles.header}>Рассчитайте<br />стоимость доставки из Китая</HTag>
       <div className={styles.formContainer}>
         <Form className={styles.form} size="b" isEditable/>
-        <PromptTag order="text arrow" arrow="down" className={cn(styles.promptSubmit,styles.prompt)}>Теперь нажмите на кнопку “Далее”</PromptTag>
+        <PromptTag name="mainBtn" order="text arrow" arrow="down" className={cn(styles.promptSubmit,styles.prompt)}>Теперь нажмите на кнопку “Далее”</PromptTag>
       </div>
       <br />
-      <PromptTag order="text arrow" arrow="up" className={cn(styles.promptForm, styles.prompt)}>Для начала заполните поля выше</PromptTag>
+      <PromptTag name="mainForm" order="text arrow" arrow="up" className={cn(styles.promptForm, styles.prompt)}>Для начала заполните поля выше</PromptTag>
     </Layout>
   );
 }

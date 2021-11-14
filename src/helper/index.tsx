@@ -5,3 +5,8 @@ export const priceNormalized = (value: number) => String(value)
   .reverse()
   .join('')
   .trim();
+
+export const capitalizeFirst = (str: string) => {
+  if (str.length < 2) return str;
+  return `${str[0].toUpperCase()}${str.slice(1).toLowerCase()}`;
+};

@@ -1,4 +1,4 @@
-import { HTMLAttributes, useState } from 'react';
+import { HTMLAttributes } from 'react';
 import styles from './style.module.scss';
 import cn from 'classnames';
 import { Button, PromptTag } from '../../components';
@@ -16,7 +16,7 @@ const Header = (props: PropsT): JSX.Element => {
       {!home && (
         <>
           <Form size="m" isEditable={Boolean(home)}/>
-          <PromptTag order={'arrow text button'} arrow={'up'} className={styles.prompt}>Теперь ваши параметры выведены сверху, нажмите на них, чтобы  внести изменения</PromptTag>
+          <PromptTag name="selectionForm" order={'arrow text button'} arrow={'up'} className={styles.prompt}>Теперь ваши параметры выведены сверху, нажмите на них, чтобы  внести изменения</PromptTag>
         </>
       )}
       <Button color="white" className={styles.button}>Связаться</Button>

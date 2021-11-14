@@ -17,7 +17,7 @@
 }
 
 .result {
-  overflow-y: scroll;
+  overflow-y: auto;
 
   height: 408px;
   margin: 58px 0 0;
@@ -63,4 +63,11 @@
   z-index: 10;
   top: -16px;
   right: -506px;
+}
+
+.title {
+  letter-spacing: -1px;
+
+  font-size: 23px;
+  line-height: 1;
 }

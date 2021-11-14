@@ -1,36 +1,70 @@
-import { HTMLAttributes, MouseEventHandler, useState } from 'react';
+import { FormEvent, HTMLAttributes, MouseEventHandler, useState } from 'react';
 import styles from './style.module.scss';
 import { ProductModelT } from '../../types/product.type';
 import { Button, PromptTag } from '..';
 import Image from 'next/image';
 import { priceNormalized } from '../../src/helper';
+import { connect } from 'react-redux';
+import * as actions from '../../src/actions';
+
+const mapStateToProps = (state) => ({ addingState: state.addingState });
+
+const actionCreators = {
+  addItem: actions.addItem,
+  addingItem: actions.addingItem,
+};
 
 type PropsT = HTMLAttributes<HTMLDivElement> & {
   item?: ProductModelT,
 };
 
 const AddingBlock = (props: PropsT): JSX.Element => {
-  const { item } = props;
+  const { addingItem, addItem, addingState } = props;
 
-  if (!item) return <p className={styles.title}>Вы не выбрали пока ни одного элемента.</p>;
+  if (addingState.length === 0) return <p className={styles.title}>Вы не выбрали пока ни одного элемента.</p>;
 
-  const [count, setCount] = useState(1);
+  const [item] = addingState;
+  const [query, setQuery] = useState({
+    count: 1,
+    size: item.size,
+    netWeight: item.netWeight,
+    grossWeight: item.grossWeight,
+    price: item.price
+  });
 
   const handleChangeCount = (operation: string): MouseEventHandler<HTMLButtonElement> => (e): void => {
     e.preventDefault();
 
     switch (operation) {
       case 'dec': {
-        if (count === 0) return;
-        setCount(count - 1);
+        if (query.count === 0) return;
+        setQuery({
+          count: query.count - 1,
+          size: query.size - item.size,
+          netWeight: query.netWeight - item.netWeight,
+          grossWeight: query.grossWeight - item.grossWeight,
+          price: query.price - item.price,
+        });
         return;
       }
       case 'inc': {
-        setCount(count + 1);
+        setQuery({
+          count: query.count + 1,
+          size: query.size + item.size,
+          netWeight: query.netWeight + item.netWeight,
+          grossWeight: query.grossWeight + item.grossWeight,
+          price: query.price + item.price,
+        });
         return;
       }
       case 'reset': {
-        setCount(0);
+        setQuery(() => ({
+          count: 0,
+          size: 0,
+          netWeight: 0,
+          grossWeight: 0,
+          price: 0,
+        }));
         return;
       }
       default:
@@ -38,19 +72,25 @@ const AddingBlock = (props: PropsT): JSX.Element => {
     }
   };
 
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    addItem({ id: item.id, ...query });
+    addingItem([]);
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.item}>
         <Image src={item.image} alt='furniture' height={70} width={100} />
         <span className={styles.text}>{item.title}</span>
-        <PromptTag order={'text arrow button'} arrow={'down'} className={styles.itemPrompt}>Теперь заполните поля для этого элемента</PromptTag>
+        <PromptTag name="addingItem" order={'text arrow button'} arrow={'down'} className={styles.itemPrompt}>Теперь заполните поля для этого элемента</PromptTag>
       </div>
-      <form action="" className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit} action="#" method="POST">
         <div className={styles.counterWrapper}>
           <span className={styles.counterTitle}>Кол-во:</span>
           <div className={styles.counter}>
             <button className={styles.counterBtn} onClick={handleChangeCount('dec')}>&minus;</button>
-            <input type="text" disabled value={count} className={styles.counterInput} />
+            <input name="count" type="text" disabled value={query.count} className={styles.counterInput} />
             <button className={styles.counterBtn} onClick={handleChangeCount('inc')}>+</button>
           </div>
         </div>
@@ -63,7 +103,7 @@ const AddingBlock = (props: PropsT): JSX.Element => {
           className={styles.formInput}
           placeholder="Общий объем, м3"
           disabled
-          value={count ? `${count * item.size} м3` : ""}
+          value={query.size ? `${query.size} м3` : ""}
         />
 
         <label htmlFor="netWeight" className={styles.label}>Общая масса нетто, кг</label>
@@ -74,7 +114,7 @@ const AddingBlock = (props: PropsT): JSX.Element => {
           className={styles.formInput}
           placeholder="Общая масса нетто, кг"
           disabled
-          value={count ? `${count * item.netWeight} кг` : ""}
+          value={query.count ? `${query.count * item.netWeight} кг` : ""}
         />
 
         <label htmlFor="grossWeight" className={styles.label}>Общая масса брутто, кг</label>
@@ -85,27 +125,26 @@ const AddingBlock = (props: PropsT): JSX.Element => {
           className={styles.formInput}
           placeholder="Общая масса брутто, кг"
           disabled
-          value={count ? `${count * item.grossWeight} кг` : ""}
+          value={query.count ? `${query.count * item.grossWeight} кг` : ""}
         />
 
         <label htmlFor="price" className={styles.label}>Стоимость одной единицы</label>
         <input
-        type="text"
-        name="price"
-        id="price"
-        className={styles.formInput}
-        placeholder="Стоимость одной единицы"
-        disabled
-        value={count ? `${priceNormalized(count * item.price)} руб` : ""}
-        
+          type="text"
+          name="price"
+          id="price"
+          className={styles.formInput}
+          placeholder="Стоимость одной единицы"
+          disabled
+          value={query.count ? `${priceNormalized(query.count * item.price)} руб` : ""}
         />
 
         <Button className={styles.formBtn} color="primary" onClick={handleChangeCount('reset')}>Сбросить</Button>
-        <Button className={styles.formBtn} color="primary">Добавить</Button>
-        <PromptTag order={'button text arrow'} arrow={'right'} className={styles.formPrompt}>Здесь вы можете сбросить параметры и добавить элемент</PromptTag>
+        <Button className={styles.formBtn} color="primary" type="submit">Добавить</Button>
+        <PromptTag name="addingBtn" order={'button text arrow'} arrow={'right'} className={styles.formPrompt}>Здесь вы можете сбросить параметры и добавить элемент</PromptTag>
       </form>
     </div>
   );
 };
 
-export default AddingBlock;
+export default connect(mapStateToProps, actionCreators)(AddingBlock);

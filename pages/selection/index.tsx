@@ -21,8 +21,7 @@ export default function Home(): JSX.Element {
         <HTag tag="h2">Выберите мебель, которую нужно перевезти</HTag>
         <HTag tag="h2">Затем заполните следующие поля выбранного элемента:</HTag>
         <SearchBlock items={products}/>
-        {/* <AddingBlock /> */}
-        <AddingBlock item={item}/>
+        <AddingBlock />
       </div>
     </Layout>
   );
