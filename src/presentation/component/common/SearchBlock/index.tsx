@@ -1,9 +1,9 @@
 import { HTMLAttributes, useState, ChangeEvent, KeyboardEvent } from 'react';
 import styles from './style.module.scss';
-import { Button, PromptTag } from '..';
-import { ProductModelT } from '../../types/product.type';
+import { Button, PromptTag } from '../..';
+import { ProductModelT } from '../../../../../types/product.type';
 import Image from 'next/image';
-import * as actions from '../../src/actions';
+import * as actions from '../../../../actions';
 import { connect } from 'react-redux';
 
 const actionCreators = {

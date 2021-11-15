@@ -21,20 +21,20 @@ const promptsUIState = handleActions({
 }, prompts);
 
 const formState = handleActions({
-  [actions.updateForm](state, { payload: { propName, value } }) {
+  [actions.updateForm](state: object, { payload: { propName, value } }) {
     return { ...state, [propName]: value };
   },
 }, { from: '', to: 'moscow', currency: 'usd', submitDisabled: true});
 
 const addingState = handleActions({
-  [actions.addingItem](state, { payload: item}) {
+  [actions.addingItem](state: object, { payload: item}) {
     console.log(item)
     return item;
   },
 }, []);
 
 const order = handleActions({
-  [actions.addItem](state, { payload: item }) {
+  [actions.addItem](state: object, { payload: item }) {
     return [ ...state, item ];
   },
 }, []);

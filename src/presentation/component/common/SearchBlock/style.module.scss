@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import "../../../../styles/variables";
 
 .label {
   display: none;
@@ -14,6 +14,10 @@
   height: 53px;
   grid-template-columns: 1fr 114px;
   gap: 8px;
+
+  @media (max-width: 565px) {
+    grid-template-columns: 70%;
+  }
 }
 
 .result {
@@ -22,6 +26,11 @@
   height: 408px;
   margin: 58px 0 0;
   padding: 0 4px 0 0;
+
+  @media (max-width: 565px) {
+    margin: 25px -20px 0;
+    padding: 0;
+  }
 }
 
 .item {
@@ -40,6 +49,11 @@
   &:not(:last-child) {
     margin: 0 0 5px;
   }
+
+  @media (max-width: 565px) {
+    grid-template-columns: 69px 1fr 68px;
+    gap: 22px;
+  }
 }
 
 .img {
@@ -48,14 +62,28 @@
 
 .text {
   font-size: 17px;
+
+  @media (max-width: 565px) {
+    font-size: 1rem;
+  }
 }
 
 .btnSearch {
   box-shadow: 0 4px 40px rgb(0 0 0 / 15%);
+
+  @media (max-width: 565px) {
+    display: none;
+  }
 }
 
 .btnSelect {
   box-shadow: 0 4px 40px 0 rgb(46 80 87 / 12%);
+
+  @media (max-width: 565px) {
+    padding: 10px;
+
+    font-size: 10px;
+  }
 }
 
 .prompt {

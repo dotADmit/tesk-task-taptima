@@ -1,17 +1,21 @@
-.header {
+.title {
   margin: 156px 0 48px;
+
+  @media (max-width: 565px) {
+    margin: 35px 0 24px;
+  }
 }
 
 .formContainer {
   position: relative;
 
-  display: inline-block;
+  display: block;
 }
 
 .promptSubmit {
   position: absolute;
   top: -49px;
-  right: 0;
+  left: 344px;
 }
 
 .promptForm {

@@ -2,7 +2,7 @@ import { AppProps } from 'next/dist/shared/lib/router/router';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from '../src/reducers';
-import '../styles/globals.scss';
+import '../src/styles/globals.scss';
 
 
 const isBrowser = () => typeof window !== "undefined";

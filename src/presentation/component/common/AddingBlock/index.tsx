@@ -1,11 +1,12 @@
 import { FormEvent, HTMLAttributes, MouseEventHandler, useState } from 'react';
 import styles from './style.module.scss';
-import { ProductModelT } from '../../types/product.type';
-import { Button, PromptTag } from '..';
+import { ProductModelT } from '../../../../../types/product.type';
+import { Button, PromptTag } from '../..';
 import Image from 'next/image';
-import { priceNormalized } from '../../src/helper';
+import { priceNormalized } from '../../../../helper';
 import { connect } from 'react-redux';
-import * as actions from '../../src/actions';
+import * as actions from '../../../../actions';
+import cn from 'classnames';
 
 const mapStateToProps = (state) => ({ addingState: state.addingState });
 
@@ -19,9 +20,9 @@ type PropsT = HTMLAttributes<HTMLDivElement> & {
 };
 
 const AddingBlock = (props: PropsT): JSX.Element => {
-  const { addingItem, addItem, addingState } = props;
+  const { addingItem, addItem, addingState, className } = props;
 
-  if (addingState.length === 0) return <p className={styles.title}>Вы не выбрали пока ни одного элемента.</p>;
+  if (addingState.length === 0) return <p className={cn(styles.title, className)}>Вы не выбрали пока ни одного элемента.</p>;
 
   const [item] = addingState;
   const [query, setQuery] = useState({
@@ -79,7 +80,7 @@ const AddingBlock = (props: PropsT): JSX.Element => {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div className={cn(styles.wrapper, className)}>
       <div className={styles.item}>
         <Image src={item.image} alt='furniture' height={70} width={100} />
         <span className={styles.text}>{item.title}</span>

@@ -1,6 +1,6 @@
-import { HTag, SearchBlock, AddingBlock } from '../../components';
-import Layout from '../../layout';
-import styles from '/styles/selection.module.scss';
+import { HTag, SearchBlock, AddingBlock } from '../../src/presentation/component';
+import Layout from '../../src/presentation/component/layout';
+import styles from '../../src/styles/selection.module.scss';
 
 const item = {
   id: 1,
@@ -18,10 +18,10 @@ export default function Home(): JSX.Element {
   return (
     <Layout>
       <div className={styles.wrapper}>
-        <HTag tag="h2">Выберите мебель, которую нужно перевезти</HTag>
-        <HTag tag="h2">Затем заполните следующие поля выбранного элемента:</HTag>
+        <HTag tag="h2" className={styles.searchTitle}>Выберите мебель, которую нужно перевезти</HTag>
+        <HTag tag="h2" className={styles.addingTitle}>Затем заполните следующие поля выбранного элемента:</HTag>
         <SearchBlock items={products}/>
-        <AddingBlock />
+        <AddingBlock className={styles.addingBlock}/>
       </div>
     </Layout>
   );

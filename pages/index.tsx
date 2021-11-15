@@ -1,14 +1,14 @@
-import { HTag, PromptTag, Form } from '../components';
-import Layout from '../layout';
-import styles from '/styles/index.module.scss';
+import { HTag, PromptTag, Form } from '../src/presentation/component';
+import Layout from '../src/presentation/component/layout';
+import styles from '../src/styles/index.module.scss';
 import cn from 'classnames';
 
 export default function Home(): JSX.Element {
   return (
     <Layout home="true">
-      <HTag tag="h1" className={styles.header}>Рассчитайте<br />стоимость доставки из Китая</HTag>
+      <HTag tag="h1" className={styles.title}>Рассчитайте<br />стоимость доставки из Китая</HTag>
       <div className={styles.formContainer}>
-        <Form className={styles.form} size="b" isEditable/>
+        <Form size="b" isEditable/>
         <PromptTag name="mainBtn" order="text arrow" arrow="down" className={cn(styles.promptSubmit,styles.prompt)}>Теперь нажмите на кнопку “Далее”</PromptTag>
       </div>
       <br />

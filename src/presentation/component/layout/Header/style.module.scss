@@ -1,0 +1,58 @@
+.header {
+  position: relative;
+
+  display: grid;
+  align-items: center;
+  grid-template-columns: 223px auto 132px;
+  grid-template-areas: "logo form button";
+}
+
+.logo {
+  grid-area: logo;
+}
+
+.form {
+  grid-area: form;
+}
+
+.button {
+  grid-area: button;
+}
+
+.prompt {
+  position: absolute;
+  top: 50px;
+  left: 223px;
+
+  padding: 16px 20px;
+}
+
+.menu {
+  display: none;
+
+  width: 22px;
+  height: 20px;
+
+  border: none;
+  background: url("/menu.svg");
+  grid-area: button;
+  justify-self: right;
+}
+
+@media (max-width: 565px) {
+  .header {
+    grid-template-columns: 223px auto 50px;
+  }
+
+  .form {
+    display: none;
+  }
+
+  .button {
+    display: none;
+  }
+
+  .menu {
+    display: inline;
+  }
+}

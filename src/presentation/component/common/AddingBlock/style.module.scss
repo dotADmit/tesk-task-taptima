@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import "../../../../styles/variables";
 
 .title {
   margin-top: 168px;
@@ -112,5 +112,9 @@
   &Btn {
     margin: 36px 9px 0 0;
     padding: 19px 64px;
+
+    @media (max-width: 1230px) {
+      padding: 19px 40px;
+    }
   }
 }

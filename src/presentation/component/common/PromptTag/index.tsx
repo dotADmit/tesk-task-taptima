@@ -1,7 +1,7 @@
 import { HTMLAttributes, MouseEvent } from 'react';
 import styles from './style.module.scss';
 import cn from 'classnames';
-import * as actions from '../../src/actions';
+import * as actions from '../../../../actions';
 import { connect } from 'react-redux';
 
 type PropsT = HTMLAttributes<HTMLDivElement> & {
