@@ -1,10 +1,12 @@
 import styles from './style.module.scss';
-import cn from 'classnames';
-import { Button } from '../..';
-import { ChangeEvent, FormHTMLAttributes, MouseEvent, useState } from 'react';
+
 import { useRouter } from 'next/dist/client/router';
-import * as actions from '../../../../actions';
+import cn from 'classnames';
+import { ChangeEvent, FormHTMLAttributes, MouseEvent, useState } from 'react';
 import { connect } from 'react-redux';
+
+import { Button } from '../..';
+import * as actions from '../../../../actions';
 import { capitalizeFirst } from '../../../../helper';
 
 const currency = {
@@ -79,6 +81,10 @@ const Form = (props: PropsT): JSX.Element => {
     }
   };
 
+  const handleChangeDisplay = () => {
+    setEdit(!isEdit);
+  };
+
   const formClasses = cn(className, styles.formB, { [styles.formM]: size === 'm' });
   const labelClasses = cn(styles.labelB, { [styles.labelM]: size === 'm' });
   const itemsContainerClasses = cn(styles.itemsContainerB, { [styles.itemsContainerM]: size === 'm' });
@@ -134,33 +140,40 @@ const Form = (props: PropsT): JSX.Element => {
       <div className={cn(styles.wrapper, styles.rateBlock)}>
         <label htmlFor="rate" className={labelClasses}>Курс</label>
         <div className={itemsContainerClasses}>
-          {size === 'b' && <input className={inputRateClasses} value={currency[formState.currency].toRub} disabled />}
+          {size === 'b' && <input className={inputRateClasses} value={currency[formState.currency as keyof typeof currency].toRub} disabled />}
         </div>
       </div>
 
       {size === 'b'
         ? (
           <>
-            <Button disabled={formState.submitDisabled} color="primary" arrow="right" type="submit" className={cn(styles.submitB, styles.desktop)} onClick={goToSelection}>Далее</Button>
-            <Button disabled={formState.submitDisabled} color="primary" type="submit" className={cn(styles.submitB, styles.mobile)} onClick={goToSelection}>Выбрать мебель</Button>
+            <Button
+              disabled={formState.submitDisabled}
+              color="primary"
+              arrow="right"
+              type="submit"
+              className={cn(styles.submitB, styles.desktop)}
+              onClick={goToSelection}>Далее</Button>
+            <Button
+              disabled={formState.submitDisabled}
+              color="primary"
+              type="submit"
+              className={cn(styles.submitB, styles.mobile)}
+              onClick={goToSelection}>Выбрать мебель</Button>
           </>
         )
         : <Button color="primary" type="submit" className={styles.submitM} onClick={handleSumbit}>Сохранить</Button>}
     </form>
   );
 
-  const handleChangeDisplay = () => {
-    setEdit(!isEdit);
-  };
-
   const formSpan = (
     <form action="" className={className}>
       <div className={styles.small}>
         <span className={styles.filled}>
-          {capitalizeFirst(formState.from)} &rarr; {cities[formState.to]}, {currency[formState.currency].sign}
+          {capitalizeFirst(formState.from)} &rarr; {cities[formState.to as keyof typeof cities]}, {currency[formState.currency as keyof typeof currency].sign}
         </span>
         <span className={styles.hover} onClick={handleChangeDisplay}>
-          {capitalizeFirst(formState.from)} &rarr; {cities[formState.to]}, {currency[formState.currency].sign}
+          {capitalizeFirst(formState.from)} &rarr; {cities[formState.to as keyof typeof cities]}, {currency[formState.currency as keyof typeof currency].sign}
         </span>
       </div>
     </form>

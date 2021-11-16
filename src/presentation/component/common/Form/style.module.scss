@@ -14,18 +14,18 @@
   grid-template-columns: 91px 127px 99px 8px 124px;
 }
 
-.wrapper:last-of-type > div {
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
-.wrapper:first-of-type > div {
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-}
-
 .wrapper {
   width: 100%;
+
+  &:last-of-type > div {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+
+  &:first-of-type > div {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
 }
 
 .labelB,
@@ -114,20 +114,20 @@
 
   border-radius: 5px;
   background-color: $white;
-}
 
-.hover::after {
-  position: absolute;
-  top: 10px;
-  right: 19px;
+  &::after {
+    position: absolute;
+    top: 10px;
+    right: 19px;
 
-  width: 22px;
-  height: 22px;
+    width: 22px;
+    height: 22px;
 
-  content: "";
+    content: "";
 
-  background: url("/icon-pen.svg") no-repeat;
-  background-size: 25px;
+    background: url("/icon-pen.svg") no-repeat;
+    background-size: 25px;
+  }
 }
 
 .small {
@@ -180,10 +180,6 @@
 
   .fromBlock {
     grid-area: from;
-  }
-
-  .labelCurrency {
-    // grid-column: 1 / 2;
   }
 
   .itemB {

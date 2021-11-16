@@ -1,8 +1,8 @@
-import { Main } from 'next/document';
-import { HTMLAttributes, ReactNode } from 'react';
+import { ReactNode } from 'react';
+import cn from 'classnames';
+
 import Header from './Header';
 import styles from './style.module.scss';
-import cn from 'classnames';
 
 type PropsT = {
   home?: 'false' | 'true';

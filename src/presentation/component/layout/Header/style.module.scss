@@ -13,6 +13,10 @@
 
 .form {
   grid-area: form;
+
+  @media (max-width: 865px) {
+    display: none;
+  }
 }
 
 .button {
@@ -42,10 +46,6 @@
 @media (max-width: 565px) {
   .header {
     grid-template-columns: 223px auto 50px;
-  }
-
-  .form {
-    display: none;
   }
 
   .button {

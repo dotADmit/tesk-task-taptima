@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
-import { handleActions } from 'redux-actions';
+import { Action, handleActions } from 'redux-actions';
+
 import * as actions from '../actions';
 
 const prompts = {
@@ -12,30 +13,32 @@ const prompts = {
 };
 
 const promptsUIState = handleActions({
-  [actions.promptShow](state: object, { payload: name }) {
+  [actions.promptShow.toString()](state: object, { payload: name }: Action<string>) {
     return { ...state, [name]: 'show' };
   },
-  [actions.promptHide](state: object, { payload: name }) {
+  [actions.promptHide.toString()](state: object, { payload: name }: Action<string>) {
     return { ...state, [name]: 'hidden' };
   },
 }, prompts);
 
 const formState = handleActions({
-  [actions.updateForm](state: object, { payload: { propName, value } }) {
+  [actions.updateForm.toString()](
+    state: object,
+    { payload: { propName, value } }: Action<{ propName: string; value: string | boolean }>
+  ) {
     return { ...state, [propName]: value };
   },
-}, { from: '', to: 'moscow', currency: 'usd', submitDisabled: true});
+}, { from: '', to: 'moscow', currency: 'usd', submitDisabled: true });
 
 const addingState = handleActions({
-  [actions.addingItem](state: object, { payload: item}) {
-    console.log(item)
+  [actions.addingItem.toString()](state: object, { payload: item }) {
     return item;
   },
 }, []);
 
 const order = handleActions({
-  [actions.addItem](state: object, { payload: item }) {
-    return [ ...state, item ];
+  [actions.addItem.toString()](state: Array<object>, { payload: item }) {
+    return [...state, item];
   },
 }, []);
 

@@ -1,10 +1,12 @@
-import { HTMLAttributes, useState, ChangeEvent, KeyboardEvent } from 'react';
 import styles from './style.module.scss';
+
+import { HTMLAttributes, useState, ChangeEvent, KeyboardEvent } from 'react';
+import { connect } from 'react-redux';
+import Image from 'next/image';
+
 import { Button, PromptTag } from '../..';
 import { ProductModelT } from '../../../../../types/product.type';
-import Image from 'next/image';
 import * as actions from '../../../../actions';
-import { connect } from 'react-redux';
 
 const actionCreators = {
   addingItem: actions.addingItem,
@@ -13,6 +15,8 @@ const actionCreators = {
 
 type PropsT = HTMLAttributes<HTMLDivElement> & {
   items: ProductModelT[],
+  addingItem:any,
+  promptHide:any
 };
 
 const SearchBlock = (props: PropsT): JSX.Element => {
@@ -29,7 +33,7 @@ const SearchBlock = (props: PropsT): JSX.Element => {
     if (e.key === 'Enter') setFilter(text);
   };
 
-  const handleAddingItem = (item) => () => {
+  const handleAddingItem = (item: ProductModelT) => () => {
     addingItem([item]);
     promptHide('searching');
   };

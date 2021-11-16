@@ -1,6 +1,7 @@
+import styles from '../../src/styles/selection.module.scss';
+
 import { HTag, SearchBlock, AddingBlock } from '../../src/presentation/component';
 import Layout from '../../src/presentation/component/layout';
-import styles from '../../src/styles/selection.module.scss';
 
 const item = {
   id: 1,

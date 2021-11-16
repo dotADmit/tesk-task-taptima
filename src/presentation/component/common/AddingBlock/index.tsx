@@ -1,12 +1,14 @@
-import { FormEvent, HTMLAttributes, MouseEventHandler, useState } from 'react';
 import styles from './style.module.scss';
+
+import { FormEvent, HTMLAttributes, MouseEventHandler, useState } from 'react';
+import Image from 'next/image';
+import cn from 'classnames';
+
 import { ProductModelT } from '../../../../../types/product.type';
 import { Button, PromptTag } from '../..';
-import Image from 'next/image';
 import { priceNormalized } from '../../../../helper';
 import { connect } from 'react-redux';
 import * as actions from '../../../../actions';
-import cn from 'classnames';
 
 const mapStateToProps = (state) => ({ addingState: state.addingState });
 

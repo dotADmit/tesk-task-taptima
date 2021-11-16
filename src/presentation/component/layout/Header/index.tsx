@@ -1,6 +1,8 @@
-import { HTMLAttributes } from 'react';
 import styles from './style.module.scss';
+
+import { HTMLAttributes } from 'react';
 import cn from 'classnames';
+
 import { Button, PromptTag } from '../..';
 import { Form } from '../..';
 

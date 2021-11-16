@@ -1,5 +1,6 @@
-import { HTMLAttributes } from 'react';
 import styles from './style.module.scss';
+
+import { HTMLAttributes } from 'react';
 import cn from 'classnames';
 
 type PropsT = HTMLAttributes<HTMLDivElement> & {

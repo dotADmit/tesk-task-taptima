@@ -1,16 +1,20 @@
-import { HTMLAttributes, MouseEvent } from 'react';
 import styles from './style.module.scss';
+
 import cn from 'classnames';
-import * as actions from '../../../../actions';
 import { connect } from 'react-redux';
+import { HTMLAttributes, MouseEvent } from 'react';
+
+import * as actions from '../../../../actions';
 
 type PropsT = HTMLAttributes<HTMLDivElement> & {
   arrow?: 'right' | 'up' | 'down' | 'left';
   order: string,
-  name: 'mainForm' | 'mainBtn' | 'selectionForm' | 'searching' | 'addingItem' | 'addingBtn'
+  name: 'mainForm' | 'mainBtn' | 'selectionForm' | 'searching' | 'addingItem' | 'addingBtn',
+  promptsUIState?: any,
+  promptHide?: any,
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
   const { promptsUIState } = state;
   return { promptsUIState };
 };

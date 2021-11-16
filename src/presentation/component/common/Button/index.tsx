@@ -1,11 +1,7 @@
-import { ButtonHTMLAttributes } from 'react';
 import styles from './style.module.scss';
-import cn from 'classnames';
 
-// interface PropsT extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-//   color: 'primary' | 'white';
-//   children: ReactNode;
-// }
+import { ButtonHTMLAttributes } from 'react';
+import cn from 'classnames';
 
 type PropsT = ButtonHTMLAttributes<HTMLButtonElement> & {
   color: 'primary' | 'white';
