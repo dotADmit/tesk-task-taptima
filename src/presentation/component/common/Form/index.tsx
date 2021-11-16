@@ -30,7 +30,7 @@ const cities = {
   stPetersburg: 'Санкт-Петербург',
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: any) => ({
   formState: state.formState,
 });
 
@@ -43,6 +43,10 @@ const actionCreators = {
 type PropsT = FormHTMLAttributes<HTMLFormElement> & {
   size: 'm' | 'b';
   isEditable: boolean,
+  updateForm?: any,
+  promptShow?: any,
+  promptHide?: any,
+  formState?: any
 };
 
 const Form = (props: PropsT): JSX.Element => {

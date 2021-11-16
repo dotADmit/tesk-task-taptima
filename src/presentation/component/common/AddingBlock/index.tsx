@@ -10,7 +10,7 @@ import { priceNormalized } from '../../../../helper';
 import { connect } from 'react-redux';
 import * as actions from '../../../../actions';
 
-const mapStateToProps = (state) => ({ addingState: state.addingState });
+const mapStateToProps = (state: any) => ({ addingState: state.addingState });
 
 const actionCreators = {
   addItem: actions.addItem,
@@ -19,6 +19,9 @@ const actionCreators = {
 
 type PropsT = HTMLAttributes<HTMLDivElement> & {
   item?: ProductModelT,
+  addingItem?: any,
+  addItem?: any,
+  addingState?: any
 };
 
 const AddingBlock = (props: PropsT): JSX.Element => {

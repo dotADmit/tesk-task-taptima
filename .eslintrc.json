@@ -6,7 +6,8 @@
   ],
   "rules": {
     "semi": "off",
-    "@typescript-eslint/semi": [ "warn" ]
+    "@typescript-eslint/semi": [ "warn" ],
+    "@typescript-eslint/no-explicit-any": "off"
   },
   "extends": [
     "eslint:recommended",
