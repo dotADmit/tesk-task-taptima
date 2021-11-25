@@ -33,6 +33,7 @@
 
 .menu {
   display: none;
+  align-self: flex-start;
 
   width: 22px;
   height: 20px;
@@ -41,6 +42,18 @@
   background: url("/menu.svg");
   grid-area: button;
   justify-self: right;
+}
+
+.btnBack {
+  width: 25px;
+  height: 16px;
+
+  border: none;
+  background: url("./arrow-header.svg") no-repeat;
+
+  @media (min-width: 565px) {
+    display: none;
+  }
 }
 
 @media (max-width: 565px) {
@@ -54,5 +67,9 @@
 
   .menu {
     display: inline;
+  }
+
+  .logoSelection {
+    display: none;
   }
 }

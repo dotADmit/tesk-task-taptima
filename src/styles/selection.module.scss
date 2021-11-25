@@ -1,3 +1,5 @@
+@import "./variables";
+
 .wrapper {
   display: grid;
 
@@ -29,8 +31,41 @@
   }
 }
 
-.searchTitle {
-  @media (max-width: 565px) {
+@media (max-width: 565px) {
+  .searchTitle {
     display: none;
   }
+}
+
+.hystmodal {
+  position: absolute;
+  z-index: 99;
+  top: 55px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  padding: 20px 20px 0;
+
+  background-color: $gray-light;
+
+  @media (min-width: 565px) {
+    display: none;
+  }
+}
+
+.btnCloseModal {
+  position: absolute;
+  top: -46px;
+  left: 20px;
+
+  width: 80%;
+  height: 50px;
+
+  cursor: pointer;
+
+  border: none;
+  background: url("../presentation/component/layout/Header/arrow-header.svg") no-repeat;
+  background-color: $gray-light;
+  background-position: 0 center;
 }

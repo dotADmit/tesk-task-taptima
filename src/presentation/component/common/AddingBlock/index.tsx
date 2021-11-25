@@ -1,7 +1,6 @@
 import styles from './style.module.scss';
 
-import { FormEvent, HTMLAttributes, MouseEventHandler, useState } from 'react';
-import Image from 'next/image';
+import { FormEvent, HTMLAttributes, useState } from 'react';
 import cn from 'classnames';
 
 import { ProductModelT } from '../../../../../types/product.type';
@@ -38,44 +37,22 @@ const AddingBlock = (props: PropsT): JSX.Element => {
     price: item.price
   });
 
-  const handleChangeCount = (operation: string): MouseEventHandler<HTMLButtonElement> => (e): void => {
+  const handleChangeCount = (operation: string): any => (e:any): void => {
     e.preventDefault();
 
-    switch (operation) {
-      case 'dec': {
-        if (query.count === 0) return;
-        setQuery({
-          count: query.count - 1,
-          size: query.size - item.size,
-          netWeight: query.netWeight - item.netWeight,
-          grossWeight: query.grossWeight - item.grossWeight,
-          price: query.price - item.price,
-        });
-        return;
-      }
-      case 'inc': {
-        setQuery({
-          count: query.count + 1,
-          size: query.size + item.size,
-          netWeight: query.netWeight + item.netWeight,
-          grossWeight: query.grossWeight + item.grossWeight,
-          price: query.price + item.price,
-        });
-        return;
-      }
-      case 'reset': {
-        setQuery(() => ({
-          count: 0,
-          size: 0,
-          netWeight: 0,
-          grossWeight: 0,
-          price: 0,
-        }));
-        return;
-      }
-      default:
-        return;
-    }
+    let count = query.count;
+    if (operation === 'dec') count = count === 0 ? 0 : count - 1;
+    else if (operation === 'inc') count += 1;
+    else if (operation === 'reset') count = 0;
+    else if (operation === 'value') count = e.target.value;
+
+    setQuery({
+      count,
+      size: count * item.size,
+      netWeight: count * item.netWeight,
+      grossWeight: count *item.grossWeight,
+      price: count * item.price,
+    });
   };
 
   const handleSubmit = (e: FormEvent) => {
@@ -87,7 +64,7 @@ const AddingBlock = (props: PropsT): JSX.Element => {
   return (
     <div className={cn(styles.wrapper, className)}>
       <div className={styles.item}>
-        <Image src={item.image} alt='furniture' height={70} width={100} />
+        <img src={item.image} alt='furniture' className={styles.itemImg}/>
         <span className={styles.text}>{item.title}</span>
         <PromptTag name="addingItem" order={'text arrow button'} arrow={'down'} className={styles.itemPrompt}>Теперь заполните поля для этого элемента</PromptTag>
       </div>
@@ -100,6 +77,17 @@ const AddingBlock = (props: PropsT): JSX.Element => {
             <button className={styles.counterBtn} onClick={handleChangeCount('inc')}>+</button>
           </div>
         </div>
+
+        <label htmlFor="count" className={styles.label}>Кол-во</label>
+        <input
+          type="text"
+          name="count"
+          id="count"
+          className={cn(styles.formInput, styles.counterInputMobile)}
+          placeholder="Кол-во"
+          onChange={handleChangeCount('value')}
+          value={query.count ? `${query.count}` : ""}
+        />
 
         <label htmlFor="size" className={styles.label}>Общий объем, м3</label>
         <input

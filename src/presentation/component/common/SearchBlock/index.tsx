@@ -2,7 +2,7 @@ import styles from './style.module.scss';
 
 import { HTMLAttributes, useState, ChangeEvent, KeyboardEvent } from 'react';
 import { connect } from 'react-redux';
-import Image from 'next/image';
+import cn from 'classnames';
 
 import { Button, PromptTag } from '../..';
 import { ProductModelT } from '../../../../../types/product.type';
@@ -20,7 +20,7 @@ type PropsT = HTMLAttributes<HTMLDivElement> & {
 };
 
 const SearchBlock = (props: PropsT): JSX.Element => {
-  const { items, addingItem, promptHide } = props;
+  const { items, addingItem, promptHide, className } = props;
   const [text, setText] = useState('');
   const [filter, setFilter] = useState('');
 
@@ -43,15 +43,26 @@ const SearchBlock = (props: PropsT): JSX.Element => {
     : items;
 
   return (
-    <div className={styles.wrapper}>
+    <div className={cn(styles.wrapper, className)}>
       <div className={styles.searchBar}>
-        <label htmlFor="search" className={styles.label}>Поиск мебели</label>
+        <label htmlFor="searchB" className={styles.label}>Поиск мебели</label>
         <input
           type="text"
           name="search"
-          id="search"
-          className={styles.search}
+          id="searchB"
+          className={styles.searchInputBig}
           placeholder="Введите название"
+          value={text}
+          onChange={handleChangeText}
+          onKeyDown={handleKeyDown}
+        />
+        <label htmlFor="searchS" className={styles.label}>Поиск мебели</label>
+        <input
+          type="text"
+          name="search"
+          id="searchS"
+          className={styles.searchInputSmall}
+          placeholder="Поиск..."
           value={text}
           onChange={handleChangeText}
           onKeyDown={handleKeyDown}
@@ -63,7 +74,7 @@ const SearchBlock = (props: PropsT): JSX.Element => {
         {filteredItems.length > 0
           ? filteredItems.map((item, i) => (
             <div className={styles.item} key={i}>
-              <Image src={item.image} alt='furniture' className={styles.img} height={97} width={100} />
+              <img src={item.image} alt='furniture' className={styles.img} />
               <p className={styles.text}>{item.title}</p>
               <Button color="primary" className={styles.btnSelect} onClick={handleAddingItem(item)}>Выбрать</Button>
             </div>

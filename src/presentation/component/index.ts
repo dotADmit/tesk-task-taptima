@@ -4,6 +4,7 @@ import PromptTag from './common/PromptTag';
 import Form from './common/Form';
 import SearchBlock from './common/SearchBlock';
 import AddingBlock from './common/AddingBlock';
+// import Select from './common/Select';
 
 export {
   Button,
@@ -12,4 +13,5 @@ export {
   Form,
   SearchBlock,
   AddingBlock,
+  // Select
 };
