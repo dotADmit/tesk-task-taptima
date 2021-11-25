@@ -6,7 +6,7 @@
 
   border-radius: 3px;
 
-  grid-template-columns: 135px 145px 100px 135px 12px 163px;
+  grid-template-columns: 135px 145px 108px 136px 12px 163px;
   justify-items: start;
 }
 
@@ -25,6 +25,27 @@
   &:first-of-type > div {
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
+  }
+
+  &:nth-child(2) .itemsContainerB::after,
+  &:nth-child(3) .itemsContainerB::after {
+    position: absolute;
+    z-index: 99;
+    right: 25px;
+    bottom: 30px;
+
+    width: 15px;
+    height: 15px;
+
+    content: "";
+
+    background: url("/arrows/select-arrow.svg") no-repeat;
+  }
+
+  &:nth-child(2) .itemsContainerM::after,
+  &:nth-child(3) .itemsContainerM::after {
+    right: 25px;
+    bottom: 20px;
   }
 }
 
@@ -53,6 +74,8 @@
 }
 
 .itemsContainerB {
+  position: relative;
+
   height: 69px;
   padding: 10px 0;
 
@@ -61,10 +84,12 @@
 }
 
 .itemsContainerM {
-  height: 44px;
+  height: 45px;
+  grid-column: 1 / 10;
 }
 
 .itemB {
+  height: 50px;
   padding: 16px;
   padding-left: 30px;
 
@@ -75,6 +100,7 @@
 }
 
 .itemM {
+  height: 24px;
   padding: 3px 20px;
 
   border-width: 1.3px !important;
@@ -176,6 +202,12 @@
   .itemsContainerB {
     height: 49px;
     padding: 0;
+
+    border-radius: 5px;
+
+    &::after {
+      display: none;
+    }
   }
 
   .fromBlock {
@@ -187,7 +219,6 @@
     padding: 17px;
 
     border: none;
-    border-radius: 5px;
   }
 
   .labelB {

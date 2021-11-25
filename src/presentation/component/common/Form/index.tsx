@@ -141,13 +141,14 @@ const Form = (props: PropsT): JSX.Element => {
           </select>
         </div>
       </div>
-      <div className={cn(styles.wrapper, styles.rateBlock)}>
-        <label htmlFor="rate" className={labelClasses}>Курс</label>
-        <div className={itemsContainerClasses}>
-          {size === 'b' && <input className={inputRateClasses} value={currency[formState.currency as keyof typeof currency].toRub} disabled />}
+      {size === 'b' && (
+        <div className={cn(styles.wrapper, styles.rateBlock)}>
+          <label htmlFor="rate" className={labelClasses}>Курс</label>
+          <div className={itemsContainerClasses}>
+            <input className={inputRateClasses} value={currency[formState.currency as keyof typeof currency].toRub} disabled />
+          </div>
         </div>
-      </div>
-
+      )}
       {size === 'b'
         ? (
           <>

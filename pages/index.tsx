@@ -15,7 +15,6 @@ export default function Home(): JSX.Element {
       </div>
       <br />
       <PromptTag name="mainForm" order="text arrow" arrow="up" className={cn(styles.promptForm, styles.prompt)}>Для начала заполните поля выше</PromptTag>
-      {/* <Select /> */}
     </Layout>
   );
 }
