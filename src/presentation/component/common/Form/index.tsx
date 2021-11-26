@@ -76,7 +76,10 @@ const Form = (props: PropsT): JSX.Element => {
   const handleChangeForm = ({ target: { name, value } }: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     updateForm({ propName: name, value });
     promptHide('mainForm');
-    if (name === 'from' && value) {
+  
+    const currentValueFrom = name === 'from' ? value : formState.from;
+  
+    if (currentValueFrom) {
       promptShow('mainBtn');
       updateForm({ propName: 'submitDisabled', value: false });
     } else {
